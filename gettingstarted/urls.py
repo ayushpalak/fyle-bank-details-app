@@ -15,8 +15,9 @@ import hello.views
 # Learn more here: https://docs.djangoproject.com/en/2.1/topics/http/urls/
 
 urlpatterns = [
-    path("", hello.views.index, name="index"),
-    path("db/", hello.views.db, name="db"),
+    
+    path("ifsc", hello.views.ifsc, name="ifsc"),
+    path("bank_name_city", hello.views.bank_name_city, name="bank_name_city"),
     path("admin/", admin.site.urls),
-    path('fyle_bank_app/', include('fyle_bank_app.fyle_bank_app.urls')),
+    
 ]
