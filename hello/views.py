@@ -26,11 +26,10 @@ def index(request):
 @csrf_exempt
 def bank_name_city(request):
 	try:
-		received_json_data = json.loads(request.body.decode())
-		bank_name = received_json_data["bank_name"]
-		city = received_json_data["city"]
-		offset = received_json_data["offset"]
-		limit = received_json_data["limit"]
+		bank_name = request.GET.get("bank_name")
+		city = request.GET.get("city")
+		offset = request.GET.get("offset")
+		limit = request.GET.get("limit")
 		bank_detail_dict = {}
 		query = "SELECT * FROM public.bank_details where bank_name = '{0}' and city = '{1}' LIMIT {2} OFFSET {3}".format(str(bank_name),str(city),str(limit),str(offset))
 		print(query)
@@ -44,10 +43,9 @@ def bank_name_city(request):
 @csrf_exempt
 def ifsc(request):
 	try:
-		received_json_data = json.loads(request.body.decode())
-		ifsc = received_json_data["ifsc"]
-		offset = received_json_data["offset"]
-		limit = received_json_data["limit"]
+		ifsc = request.GET.get("ifsc")
+		offset = request.GET.get("offset")
+		limit = request.GET.get("limit")
 		bank_detail_dict = {}
 		query = "SELECT * FROM public.bank_details where ifsc = '{0}'  LIMIT {1} OFFSET {2}".format(str(ifsc),str(limit),str(offset))
 		print(query)
