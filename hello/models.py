@@ -3,3 +3,11 @@ from django.db import models
 # Create your models here.
 class Greeting(models.Model):
     when = models.DateTimeField("date created", auto_now_add=True)
+    ifsc = models.CharField(max_length=255,blank=True)
+    bank_id = models.CharField(max_length=255,blank=True)
+    branch = models.CharField(max_length=255,blank=True)
+    address = models.CharField(max_length=255,blank=True)
+    city = models.CharField(max_length=255,blank=True)
+    district = models.CharField(max_length=255,blank=True)
+    state = models.CharField(max_length=255,blank=True)
+    bank_name = models.CharField(max_length=255,blank=True)
