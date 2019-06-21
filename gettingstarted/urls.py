@@ -18,4 +18,5 @@ urlpatterns = [
     path("", hello.views.index, name="index"),
     path("db/", hello.views.db, name="db"),
     path("admin/", admin.site.urls),
+    path('fyle_bank_app/', include('fyle_bank_app.fyle_bank_app.urls')),
 ]
