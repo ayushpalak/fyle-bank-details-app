@@ -31,13 +31,13 @@ def bank_name_city(request):
 		city = received_json_data["city"]
 		offset = received_json_data["offset"]
 		limit = received_json_data["limit"]
-		bank_branch = []
+		bank_detail_dict = {}
 		query = "SELECT * FROM public.bank_details where bank_name = '{0}' and city = '{1}' LIMIT {2} OFFSET {3}".format(str(bank_name),str(city),str(limit),str(offset))
 		print(query)
 		for bank in bank_details.objects.raw(query):
-			bank_branch.append(bank.bank_branch)
-
-		return JsonResponse({"bankbranch":bank_branch})
+			bank_detail_dict[bank.ifsc] = {"ifsc" : bank.ifsc,"bank_id":bank.bank_id,"branch":bank.branch,"address": bank.address,"city":bank.city,"district":bank.district,"state":bank.state,"bank_name":bank.bank_name}
+		
+		return JsonResponse({"bankbranch":bank_detail_dict})
 	except Exception as e:
 		return JsonResponse({"error":str(e)})
 
@@ -48,11 +48,12 @@ def ifsc(request):
 		ifsc = received_json_data["ifsc"]
 		offset = received_json_data["offset"]
 		limit = received_json_data["limit"]
-		bank_branch = []
+		bank_detail_dict = {}
 		query = "SELECT * FROM public.bank_details where ifsc = '{0}'  LIMIT {1} OFFSET {2}".format(str(ifsc),str(limit),str(offset))
+		print(query)
 		for bank in bank_details.objects.raw(query):
-			bank_branch.append(bank.bank_branch)
-		return JsonResponse({"result":result})
+			bank_detail_dict[bank.ifsc] = {"ifsc" : bank.ifsc,"bank_id":bank.bank_id,"branch":bank.branch,"address": bank.address,"city":bank.city,"district":bank.district,"state":bank.state,"bank_name":bank.bank_name}
+		return JsonResponse({"result":bank_detail_dict})
 	except Exception as e:
 		return JsonResponse({"error":str(e)})
 
