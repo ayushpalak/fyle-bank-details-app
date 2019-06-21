@@ -32,7 +32,7 @@ def bank_name_city(request):
 		offset = received_json_data["offset"]
 		limit = received_json_data["limit"]
 		bank_branch = []
-		query = 'SELECT * FROM public.bank_details where bank_name = {0} and city = {1} LIMIT {2} OFFSET {3}'.format(str(bank_name),str(city),str(limit),str(offset))
+		query = "SELECT * FROM public.bank_details where bank_name = '{0}' and city = '{1}' LIMIT {2} OFFSET {3}".format(str(bank_name),str(city),str(limit),str(offset))
 		print(query)
 		for bank in bank_details.objects.raw(query):
 			bank_branch.append(bank.bank_branch)
@@ -49,7 +49,7 @@ def ifsc(request):
 		offset = received_json_data["offset"]
 		limit = received_json_data["limit"]
 		bank_branch = []
-		query = 'SELECT * FROM public.bank_details where ifsc = {0}  LIMIT {1} OFFSET {2}'.format(str(ifsc),str(limit),str(offset))
+		query = "SELECT * FROM public.bank_details where ifsc = '{0}'  LIMIT {1} OFFSET {2}".format(str(ifsc),str(limit),str(offset))
 		for bank in bank_details.objects.raw(query):
 			bank_branch.append(bank.bank_branch)
 		return JsonResponse({"result":result})
