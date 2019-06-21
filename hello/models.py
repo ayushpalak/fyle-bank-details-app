@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 class Greeting(models.Model):
-    ifsc = models.CharField(max_length=255,blank=True)
+    ifsc = models.CharField(primary_key=True,max_length=255,blank=True)
     bank_id = models.CharField(max_length=255,blank=True)
     branch = models.CharField(max_length=255,blank=True)
     address = models.CharField(max_length=255,blank=True)
