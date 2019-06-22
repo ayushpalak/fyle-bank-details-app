@@ -23,8 +23,7 @@ from django.conf.urls import url
 
 urlpatterns = [
     
-    # path("ifsc", hello.views.ifsc, name="ifsc"),
-    # path("bank_name_city", hello.views.bank_name_city, name="bank_name_city"),
+    
     path("admin/", admin.site.urls),
 
     url(r'^api-token-auth/', obtain_jwt_token),

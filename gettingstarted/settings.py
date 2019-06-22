@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     'rest_framework',
     "hello",
-    "fyle_bank_app",
 ]
 
 MIDDLEWARE = [
@@ -109,7 +108,7 @@ REST_FRAMEWORK = {
     ),
 }
 
-
+# making it to 5 days
 JWT_AUTH = {
 
     'JWT_EXPIRATION_DELTA': datetime.timedelta(seconds=432000),
