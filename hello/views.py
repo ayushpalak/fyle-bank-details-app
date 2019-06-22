@@ -22,6 +22,10 @@ class bank_name_city_view(APIView):
 	@csrf_exempt
 	def get(self, request):
 		try:
+			bank_name = "None"
+			city = "None"
+			offset = 0
+			limit = 1
 			bank_name = request.GET.get("bank_name")
 			city = request.GET.get("city")
 			offset = request.GET.get("offset")
@@ -42,6 +46,10 @@ class ifsc_view(APIView):
 	@csrf_exempt
 	def get(self, request):
 		try:
+			ifsc = "None"
+			city = "None"
+			offset = 0
+			limit = 1
 			ifsc = request.GET.get("ifsc")
 			offset = request.GET.get("offset")
 			limit = request.GET.get("limit")
