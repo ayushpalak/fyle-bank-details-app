@@ -26,10 +26,14 @@ class bank_name_city_view(APIView):
 			city = "None"
 			offset = 0
 			limit = 1
-			bank_name = request.GET.get("bank_name")
-			city = request.GET.get("city")
-			offset = request.GET.get("offset")
-			limit = request.GET.get("limit")
+			if request.GET.get("bank_name") != None:
+				bank_name = request.GET.get("bank_name")
+			if request.GET.get("city") != None:
+				city = request.GET.get("city")
+			if request.GET.get("offset") != None:
+				offset = request.GET.get("offset")
+			if request.GET.get("limit") != None:
+				limit = request.GET.get("limit")
 			bank_detail_dict = {}
 			query = "SELECT * FROM public.bank_details where bank_name = '{0}' and city = '{1}' LIMIT {2} OFFSET {3}".format(str(bank_name),str(city),str(limit),str(offset))
 			print(query)
@@ -50,9 +54,14 @@ class ifsc_view(APIView):
 			city = "None"
 			offset = 0
 			limit = 1
-			ifsc = request.GET.get("ifsc")
-			offset = request.GET.get("offset")
-			limit = request.GET.get("limit")
+
+			if request.GET.get("ifsc") != None:
+				ifsc = request.GET.get("ifsc")
+			if request.GET.get("offset") != None:
+				offset = request.GET.get("offset")
+			if request.GET.get("limit") != None:
+				limit = request.GET.get("limit")
+
 			bank_detail_dict = {}
 			query = "SELECT * FROM public.bank_details where ifsc = '{0}'  LIMIT {1} OFFSET {2}".format(str(ifsc),str(limit),str(offset))
 			print(query)
